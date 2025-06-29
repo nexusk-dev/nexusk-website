@@ -4,7 +4,18 @@ import React, {useState} from 'react';
 import {GlassCard, NeonButton} from '@/components/ui';
 import {TrendingUp} from 'lucide-react';
 
-const initialData = {
+// It's good practice to define the type for your data structure
+type PerformanceData = {
+    tps: number;
+    players: number;
+    memory: number;
+};
+
+// Define the keys as a specific union type
+type TimeRange = '1h' | '6h' | '24h' | '7d';
+
+
+const initialData: Record<TimeRange, PerformanceData[]> = {
     '1h': Array.from({length: 6}, (_, i) => ({
         tps: 20 - Math.random(),
         players: 70 + Math.random() * 10,
@@ -33,18 +44,21 @@ type ChartProps = {
     max: number;
 };
 
+
 export const PerformanceChart = () => {
     const [timeRange, setTimeRange] = useState<'1h' | '6h' | '24h' | '7d'>('1h');
     const chartData = initialData[timeRange];
 
+    const timeRangeKeys: TimeRange[] = ['1h', '6h', '24h', '7d'];
+
     const Chart: React.FC<ChartProps> = ({ data, colorClass, max }) => (
-        <div className="h-24 bg-nexus-darker/50 rounded flex items-end justify-around p-2 gap-2">
-            {data.map((value, index) => (
-                <div
-                    key={index}
-                    className={`w-full rounded-t transition-all duration-300 hover:opacity-80 ${colorClass}`}
-                    style={{ height: `${(value / max) * 100}%` }}
-                />
+        <div className="flex space-x-2 mt-2 sm:mt-0">
+            {/* CORRECT: Map over the typed array. No 'as any' is needed. */}
+            {timeRangeKeys.map(range => (
+                <button key={range} onClick={() => setTimeRange(range)}
+                        className={`px-3 py-1 text-xs font-matrix border rounded transition-colors ${timeRange === range ? 'border-nexus-primary text-nexus-primary bg-nexus-primary/10' : 'border-nexus-surface text-nexus-text-muted hover:border-nexus-primary'}`}>
+                    {range}
+                </button>
             ))}
         </div>
     );
