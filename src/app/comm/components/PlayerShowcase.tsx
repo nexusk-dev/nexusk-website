@@ -26,14 +26,16 @@ const categories = [
     {id: 'videos', name: '视频', icon: Video},
 ];
 
+type CategoryType = 'builds' | 'screenshots' | 'videos';
+
 export const PlayerShowcase = () => {
-    const [activeCategory, setActiveCategory] = useState<'builds' | 'screenshots' | 'videos'>('builds');
+    const [activeCategory, setActiveCategory] = useState<CategoryType>('builds');
 
     return (
         <div className="space-y-6">
             <div className="flex justify-center space-x-2 md:space-x-4">
                 {categories.map(({id, name, icon: Icon}) => (
-                    <button key={id} onClick={() => setActiveCategory(id as any)}
+                    <button key={id} onClick={() => setActiveCategory(id as CategoryType)}
                             className={`flex items-center space-x-2 px-4 md:px-6 py-3 font-matrix text-sm border-2 transition-all duration-300 ${activeCategory === id ? 'border-nexus-secondary text-nexus-secondary bg-nexus-secondary/10' : 'border-nexus-surface text-nexus-text-muted hover:border-nexus-secondary hover:text-nexus-secondary'}`}
                             style={{clipPath: 'polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)'}}>
                         <Icon className="w-4 h-4"/>
