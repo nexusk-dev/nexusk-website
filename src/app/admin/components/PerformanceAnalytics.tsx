@@ -44,7 +44,7 @@ export const PerformanceAnalytics = () => {
     const [timeRange, setTimeRange] = useState<'24h' | '7d'>('24h');
     // 1. 初始化 state 为 null，表示数据还未生成
     const [chartData, setChartData] = useState<{ tps: number[], players: number[], memory: number[] } | null>(null);
-
+    const timeRanges = ['24h', '7d'] as const;
     // 2. 使用 useEffect 在组件挂载到客户端后生成随机数据
     useEffect(() => {
         const config = chartConfig[timeRange];
@@ -61,7 +61,7 @@ export const PerformanceAnalytics = () => {
             <div className="flex items-center justify-between">
                 <h3 className="text-xl font-cyber text-nexus-primary">PERFORMANCE ANALYTICS</h3>
                 <div className="flex space-x-2">
-                    {(['24h', '7d'] as const).map(range => (
+                    {timeRanges.map(range => (
                         <button key={range} onClick={() => setTimeRange(range)}
                                 className={`px-3 py-1 text-sm font-matrix border-2 rounded transition-colors ${timeRange === range ? 'border-nexus-primary text-nexus-primary bg-nexus-primary/10' : 'border-nexus-surface text-nexus-text-muted hover:border-nexus-primary'}`}>
                             {range}
