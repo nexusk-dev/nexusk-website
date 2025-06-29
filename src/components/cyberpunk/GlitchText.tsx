@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 type GlitchTextProps = {
     text: string;
@@ -42,9 +42,21 @@ export const GlitchText = ({
       <span className={isGlitching ? 'opacity-0' : 'opacity-100 transition-opacity'}>{text}</span>
             {isGlitching && (
                 <>
-                    <span className="absolute inset-0" style={{ color: colors[0], textShadow: `0 0 5px ${colors[0]}`, transform: 'translate(-2px, -1px)' }}>{text}</span>
-                    <span className="absolute inset-0" style={{ color: colors[1], textShadow: `0 0 5px ${colors[1]}`, transform: 'translate(2px, 1px)' }}>{text}</span>
-                    <span className="absolute inset-0" style={{ color: colors[2], textShadow: `0 0 5px ${colors[2]}`, transform: 'translate(1px, -2px)' }}>{text}</span>
+                    <span className="absolute inset-0" style={{
+                        color: colors[0],
+                        textShadow: `0 0 5px ${colors[0]}`,
+                        transform: 'translate(-2px, -1px)'
+                    }}>{text}</span>
+                    <span className="absolute inset-0" style={{
+                        color: colors[1],
+                        textShadow: `0 0 5px ${colors[1]}`,
+                        transform: 'translate(2px, 1px)'
+                    }}>{text}</span>
+                    <span className="absolute inset-0" style={{
+                        color: colors[2],
+                        textShadow: `0 0 5px ${colors[2]}`,
+                        transform: 'translate(1px, -2px)'
+                    }}>{text}</span>
                 </>
             )}
     </span>

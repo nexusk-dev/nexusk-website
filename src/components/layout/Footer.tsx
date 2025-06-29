@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { HologramEffect } from '@/components/cyberpunk';
+import {HologramEffect} from '@/components/cyberpunk';
 
 const quickLinks = ['Server Status', 'Player Guide', 'Modpack', 'Support'];
 const legalLinks = ['Privacy Policy', 'Terms of Service'];
@@ -21,7 +21,9 @@ export const Footer = () => {
                         <h4 className="font-cyber text-white mb-4">QUICK LINKS</h4>
                         <ul className="space-y-2">
                             {quickLinks.map(link => (
-                                <li key={link}><Link href="#" className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link></li>
+                                <li key={link}><Link href="#"
+                                                     className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -30,7 +32,9 @@ export const Footer = () => {
                         <h4 className="font-cyber text-white mb-4">COMMUNITY</h4>
                         <ul className="space-y-2">
                             {['Discord', 'QQ Group', 'GitHub'].map(link => (
-                                <li key={link}><Link href="#" className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link></li>
+                                <li key={link}><Link href="#"
+                                                     className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -39,14 +43,17 @@ export const Footer = () => {
                         <h4 className="font-cyber text-white mb-4">LEGAL</h4>
                         <ul className="space-y-2">
                             {legalLinks.map(link => (
-                                <li key={link}><Link href="#" className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link></li>
+                                <li key={link}><Link href="#"
+                                                     className="text-nexus-text-muted hover:text-nexus-primary transition-colors text-sm">{link}</Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-nexus-primary/20 text-center">
-                    <p className="text-nexus-text-muted font-matrix text-sm">© {new Date().getFullYear()} NexusK Server. All rights reserved.</p>
+                    <p className="text-nexus-text-muted font-matrix text-sm">© {new Date().getFullYear()} NexusK Server.
+                        All rights reserved.</p>
                 </div>
             </div>
         </footer>

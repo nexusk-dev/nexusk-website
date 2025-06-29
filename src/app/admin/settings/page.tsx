@@ -1,5 +1,5 @@
 // src/app/admin/settings/page.tsx
-import { GlassCard } from "@/components/ui";
+import {GlassCard} from "@/components/ui";
 
 export default function SettingsPage() {
     return (

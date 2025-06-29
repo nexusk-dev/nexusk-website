@@ -1,6 +1,6 @@
 import React from 'react';
-import type { LucideIcon } from 'lucide-react';
-import { GlassCard } from './Card';
+import type {LucideIcon} from 'lucide-react';
+import {GlassCard} from './Card';
 
 type StatCardProps = {
     title: string;
@@ -22,11 +22,11 @@ export const StatCard = ({
                              className = ''
                          }: StatCardProps) => {
     const variants = {
-        primary: { color: 'text-nexus-primary', glow: '#00d4ff' },
-        secondary: { color: 'text-nexus-secondary', glow: '#ff2a6d' },
-        accent: { color: 'text-nexus-accent', glow: '#01ff89' },
-        warning: { color: 'text-nexus-warning', glow: '#ffaa00' },
-        error: { color: 'text-nexus-error', glow: '#ff073a' },
+        primary: {color: 'text-nexus-primary', glow: '#00d4ff'},
+        secondary: {color: 'text-nexus-secondary', glow: '#ff2a6d'},
+        accent: {color: 'text-nexus-accent', glow: '#01ff89'},
+        warning: {color: 'text-nexus-warning', glow: '#ffaa00'},
+        error: {color: 'text-nexus-error', glow: '#ff073a'},
     };
 
     const selectedVariant = variants[variant];
@@ -42,13 +42,14 @@ export const StatCard = ({
                         {value}
                     </div>
                     {trend && (
-                        <div className={`text-sm font-matrix flex items-center ${trendDirection === 'up' ? 'text-green-400' : 'text-red-400'}`}>
+                        <div
+                            className={`text-sm font-matrix flex items-center ${trendDirection === 'up' ? 'text-green-400' : 'text-red-400'}`}>
                             {trendDirection === 'up' ? '↗' : '↘'} {trend}
                         </div>
                     )}
                 </div>
                 {Icon && (
-                    <Icon className={`w-8 h-8 opacity-60 ${selectedVariant.color}`} />
+                    <Icon className={`w-8 h-8 opacity-60 ${selectedVariant.color}`}/>
                 )}
             </div>
         </GlassCard>

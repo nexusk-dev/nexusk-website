@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Diamond, Sword, Shield, Star } from 'lucide-react';
+import React, {useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import {Diamond, Shield, Star, Sword} from 'lucide-react';
 
 type Item = {
     name: string;
@@ -40,16 +40,16 @@ export const ItemDisplay = ({
     const [isTooltipVisible, setTooltipVisible] = useState(false);
     const enchanted = item.enchantments && item.enchantments.length > 0;
 
-    const sizes = { sm: 32, md: 48, lg: 64, xl: 80 };
+    const sizes = {sm: 32, md: 48, lg: 64, xl: 80};
     const pixelSize = sizes[size];
     const rarityColor = `text-rarity-${item.rarity || 'common'}`;
 
     const ItemIcon = () => {
         const iconClass = `w-1/2 h-1/2 ${rarityColor}`;
-        if (item.id.includes('sword')) return <Sword className={iconClass} />;
-        if (item.id.includes('diamond')) return <Diamond className={iconClass} />;
-        if (item.id.includes('shield')) return <Shield className={iconClass} />;
-        return <Star className={iconClass} />;
+        if (item.id.includes('sword')) return <Sword className={iconClass}/>;
+        if (item.id.includes('diamond')) return <Diamond className={iconClass}/>;
+        if (item.id.includes('shield')) return <Shield className={iconClass}/>;
+        return <Star className={iconClass}/>;
     };
 
     return (
@@ -71,10 +71,11 @@ export const ItemDisplay = ({
                     boxShadow: enchanted ? `0 0 ${pixelSize / 4}px var(--color-rarity-epic)` : undefined,
                 }}
             >
-                <ItemIcon />
+                <ItemIcon/>
 
                 {showCount && item.count && item.count > 1 && (
-                    <div className="absolute bottom-0 right-0 bg-black/70 text-white text-xs font-matrix px-1.5 py-0.5 rounded-tl-md rounded-br-sm">
+                    <div
+                        className="absolute bottom-0 right-0 bg-black/70 text-white text-xs font-matrix px-1.5 py-0.5 rounded-tl-md rounded-br-sm">
                         {item.count}
                     </div>
                 )}
@@ -82,7 +83,11 @@ export const ItemDisplay = ({
                 {enchanted && (
                     <div
                         className="absolute inset-0 rounded-md opacity-20"
-                        style={{ background: 'linear-gradient(45deg, #AA00AA, #5555FF, #AA00AA)', backgroundSize: '200% 200%', animation: 'aurora 3s ease infinite' }}
+                        style={{
+                            background: 'linear-gradient(45deg, #AA00AA, #5555FF, #AA00AA)',
+                            backgroundSize: '200% 200%',
+                            animation: 'aurora 3s ease infinite'
+                        }}
                     />
                 )}
             </div>
@@ -90,17 +95,19 @@ export const ItemDisplay = ({
             <AnimatePresence>
                 {showTooltip && isTooltipVisible && (
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
+                        initial={{opacity: 0, y: 10}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: 10}}
+                        transition={{duration: 0.2}}
                         className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 w-48"
                     >
-                        <div className="p-2 bg-nexus-darker text-white rounded-lg shadow-lg border border-nexus-surface font-matrix text-sm">
+                        <div
+                            className="p-2 bg-nexus-darker text-white rounded-lg shadow-lg border border-nexus-surface font-matrix text-sm">
                             <p className={`font-bold mb-1 ${rarityColor}`}>
                                 {item.name}
                             </p>
-                            {item.description && <p className="text-xs text-nexus-text-muted italic mb-2">{item.description}</p>}
+                            {item.description &&
+                                <p className="text-xs text-nexus-text-muted italic mb-2">{item.description}</p>}
                             {enchanted && (
                                 <div className="space-y-0.5">
                                     {item.enchantments?.map((enchant, index) => (

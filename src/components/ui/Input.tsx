@@ -1,7 +1,7 @@
 'use client'; // <--- 在这里添加这一行
-import React, { useState } from 'react';
-import type { LucideIcon } from 'lucide-react';
-import { AlertTriangle } from 'lucide-react';
+import React, {useState} from 'react';
+import type {LucideIcon} from 'lucide-react';
+import {AlertTriangle} from 'lucide-react';
 
 type CyberInputProps = {
     label?: string;
@@ -31,7 +31,7 @@ export const CyberInput = ({
             )}
             <div className="relative">
                 {Icon && (
-                    <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-nexus-text-muted" />
+                    <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-nexus-text-muted"/>
                 )}
                 <input
                     type={type}
@@ -62,7 +62,7 @@ export const CyberInput = ({
             </div>
             {error && (
                 <div className="flex items-center space-x-2 text-sm text-nexus-error">
-                    <AlertTriangle className="w-4 h-4" />
+                    <AlertTriangle className="w-4 h-4"/>
                     <span>{error}</span>
                 </div>
             )}

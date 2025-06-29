@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { CyberFrame } from '@/components/cyberpunk';
-import { NeonButton } from '@/components/ui';
-import { Play, Pause, RotateCcw, Download, Terminal } from 'lucide-react';
+import React, {useEffect, useRef, useState} from 'react';
+import {CyberFrame} from '@/components/cyberpunk';
+import {NeonButton} from '@/components/ui';
+import {Download, Pause, Play, RotateCcw, Terminal} from 'lucide-react';
 
 type LogLevel = 'INFO' | 'WARN' | 'ERROR' | 'COMMAND' | 'DEFAULT';
 
 const levelConfig: Record<LogLevel, { className: string }> = {
-    INFO: { className: 'text-nexus-accent' },
-    WARN: { className: 'text-nexus-warning' },
-    ERROR: { className: 'text-nexus-error' },
-    COMMAND: { className: 'text-nexus-primary' },
-    DEFAULT: { className: 'text-nexus-text-muted' },
+    INFO: {className: 'text-nexus-accent'},
+    WARN: {className: 'text-nexus-warning'},
+    ERROR: {className: 'text-nexus-error'},
+    COMMAND: {className: 'text-nexus-primary'},
+    DEFAULT: {className: 'text-nexus-text-muted'},
 };
 
 type LogEntry = {
@@ -24,24 +24,34 @@ type LogEntry = {
 
 export const ServerConsole = () => {
     const [logs, setLogs] = useState<LogEntry[]>([
-        { id: 1, timestamp: '14:23:15', level: 'INFO', message: 'Server started successfully' },
-        { id: 2, timestamp: '14:24:01', level: 'INFO', message: 'Steve_Builder joined' },
-        { id: 3, timestamp: '14:24:15', level: 'WARN', message: 'Alex_Miner tried to access restricted area' },
-        { id: 4, timestamp: '14:26:45', level: 'ERROR', message: 'Failed to connect to database' },
+        {id: 1, timestamp: '14:23:15', level: 'INFO', message: 'Server started successfully'},
+        {id: 2, timestamp: '14:24:01', level: 'INFO', message: 'Steve_Builder joined'},
+        {id: 3, timestamp: '14:24:15', level: 'WARN', message: 'Alex_Miner tried to access restricted area'},
+        {id: 4, timestamp: '14:26:45', level: 'ERROR', message: 'Failed to connect to database'},
     ]);
     const [command, setCommand] = useState('');
     const logsEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        logsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        logsEndRef.current?.scrollIntoView({behavior: 'smooth'});
     }, [logs]);
 
     const executeCommand = () => {
         if (!command.trim()) return;
         const newLogs: LogEntry[] = [
             ...logs,
-            { id: Date.now(), timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }), level: 'COMMAND', message: `> ${command}` },
-            { id: Date.now() + 1, timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }), level: 'INFO', message: `Command executed: ${command}` }
+            {
+                id: Date.now(),
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'}),
+                level: 'COMMAND',
+                message: `> ${command}`
+            },
+            {
+                id: Date.now() + 1,
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'}),
+                level: 'INFO',
+                message: `Command executed: ${command}`
+            }
         ];
         setLogs(newLogs);
         setCommand('');
@@ -64,16 +74,17 @@ export const ServerConsole = () => {
                             return (
                                 <div key={log.id} className="flex">
                                     <span className="text-nexus-text-muted mr-4">{log.timestamp}</span>
-                                    <span className={`font-bold w-20 flex-shrink-0 ${config.className}`}>[{log.level}]</span>
+                                    <span
+                                        className={`font-bold w-20 flex-shrink-0 ${config.className}`}>[{log.level}]</span>
                                     <p className="flex-1 text-white whitespace-pre-wrap">{log.message}</p>
                                 </div>
                             );
                         })}
-                        <div ref={logsEndRef} />
+                        <div ref={logsEndRef}/>
                     </div>
                     <div className="p-3 border-t border-nexus-primary/20 bg-nexus-surface/50">
                         <div className="flex items-center space-x-3">
-                            <Terminal className="w-5 h-5 text-nexus-primary" />
+                            <Terminal className="w-5 h-5 text-nexus-primary"/>
                             <input
                                 type="text"
                                 value={command}

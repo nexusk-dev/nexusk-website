@@ -59,7 +59,7 @@ export const NeonButton = ({
         >
             <div className="flex items-center justify-center space-x-2">
                 {loading ? (
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-current border-t-transparent" />
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-current border-t-transparent"/>
                 ) : (
                     children
                 )}

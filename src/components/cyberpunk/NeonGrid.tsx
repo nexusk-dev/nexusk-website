@@ -1,7 +1,7 @@
 // src/components/cyberpunk/NeonGrid.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
 type NeonGridProps = {
     gridSize?: number;
@@ -48,17 +48,18 @@ export const NeonGrid = ({
                             fill="none"
                             stroke={color}
                             strokeWidth="0.5"
-                            style={{ filter: `drop-shadow(0 0 1px ${color})` }}
+                            style={{filter: `drop-shadow(0 0 1px ${color})`}}
                         />
                     </pattern>
                     {animated && (
-                        <pattern id={glowPatternId} width={gridSize * 4} height={gridSize * 4} patternUnits="userSpaceOnUse">
+                        <pattern id={glowPatternId} width={gridSize * 4} height={gridSize * 4}
+                                 patternUnits="userSpaceOnUse">
                             <circle
                                 cx={gridSize * 2}
                                 cy={gridSize * 2}
                                 r="1.5"
                                 fill={color}
-                                style={{ filter: `drop-shadow(0 0 4px ${color})` }}
+                                style={{filter: `drop-shadow(0 0 4px ${color})`}}
                             >
                                 <animate
                                     attributeName="opacity"
@@ -72,8 +73,8 @@ export const NeonGrid = ({
                         </pattern>
                     )}
                 </defs>
-                <rect width="100%" height="100%" fill={`url(#${patternId})`} opacity="0.3" />
-                {animated && <rect width="100%" height="100%" fill={`url(#${glowPatternId})`} opacity="0.5" />}
+                <rect width="100%" height="100%" fill={`url(#${patternId})`} opacity="0.3"/>
+                {animated && <rect width="100%" height="100%" fill={`url(#${glowPatternId})`} opacity="0.5"/>}
             </svg>
         </div>
     );

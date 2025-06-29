@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, {useEffect, useRef} from 'react';
 
 type DigitalRainProps = {
     color?: string;
@@ -74,5 +74,5 @@ export const DigitalRain = ({
         };
     }, [color, density, speed, binary]);
 
-    return <canvas ref={canvasRef} className={`fixed inset-0 pointer-events-none ${className}`} style={{ zIndex: -1 }} />;
+    return <canvas ref={canvasRef} className={`fixed inset-0 pointer-events-none ${className}`} style={{zIndex: -1}}/>;
 };

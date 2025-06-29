@@ -1,5 +1,5 @@
 // src/app/api/server-status/route.ts
-import { NextResponse } from 'next/server'
+import {NextResponse} from 'next/server'
 
 interface ServerStatus {
     online: boolean
@@ -97,7 +97,7 @@ export async function GET() {
         // 返回离线状态而不是错误
         const offlineStatus: ServerStatus = {
             online: false,
-            players: { online: 0, max: 100 },
+            players: {online: 0, max: 100},
             version: 'Unknown',
             motd: '服务器暂时离线',
             ping: 0

@@ -61,7 +61,7 @@ export const CyberLoading = ({
                 <div
                     key={i}
                     className={`w-2 h-2 rounded-full animate-bounce-sm ${bgColors[variant]}`}
-                    style={{ animationDelay: `${i * 0.1}s` }}
+                    style={{animationDelay: `${i * 0.1}s`}}
                 />
             ))}
         </div>

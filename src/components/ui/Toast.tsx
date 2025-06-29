@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { GlassCard } from './Card';
-import { Check, AlertTriangle, Info, X, LucideIcon } from 'lucide-react';
+import React, {useEffect, useState} from 'react';
+import {GlassCard} from './Card';
+import {AlertTriangle, Check, Info, LucideIcon, X} from 'lucide-react';
 
 type ToastProps = {
     message: string;
@@ -40,10 +40,10 @@ export const Toast = ({
     };
 
     const types: Record<typeof type, { className: string; icon: LucideIcon }> = {
-        success: { className: 'border-l-nexus-accent text-nexus-accent', icon: Check },
-        error: { className: 'border-l-nexus-error text-nexus-error', icon: AlertTriangle },
-        warning: { className: 'border-l-nexus-warning text-nexus-warning', icon: AlertTriangle },
-        info: { className: 'border-l-nexus-primary text-nexus-primary', icon: Info }
+        success: {className: 'border-l-nexus-accent text-nexus-accent', icon: Check},
+        error: {className: 'border-l-nexus-error text-nexus-error', icon: AlertTriangle},
+        warning: {className: 'border-l-nexus-warning text-nexus-warning', icon: AlertTriangle},
+        info: {className: 'border-l-nexus-primary text-nexus-primary', icon: Info}
     };
 
     const selectedType = types[type];
@@ -61,13 +61,13 @@ export const Toast = ({
                 hover={false}
             >
                 <div className="flex items-center space-x-3">
-                    <Icon className={`w-5 h-5 ${selectedType.className.split(' ')[1]}`} />
+                    <Icon className={`w-5 h-5 ${selectedType.className.split(' ')[1]}`}/>
                     <span className="text-nexus-text font-matrix flex-grow">{message}</span>
                     <button
                         onClick={handleClose}
                         className="ml-auto text-nexus-text-muted hover:text-white transition-colors flex-shrink-0"
                     >
-                        <X className="w-4 h-4" />
+                        <X className="w-4 h-4"/>
                     </button>
                 </div>
             </GlassCard>

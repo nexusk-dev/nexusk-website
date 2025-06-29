@@ -2,25 +2,20 @@
 
 'use client'; // 声明为客户端组件，因为我们使用了 hooks (useState, etc.)
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
-    NeonButton,
-    GlassCard,
+    CyberBadge,
     CyberInput,
+    CyberLoading,
     CyberModal,
-    Toast,
     CyberProgress,
     CyberSelect,
-    CyberBadge,
-    CyberLoading,
+    GlassCard,
+    NeonButton,
     StatCard,
+    Toast,
 } from '@/components/ui'; // 使用 @ 别名从索引文件导入
-
-import {
-    Terminal, Zap, Users, Server, Globe, Activity, Copy, ExternalLink,
-    X, Check, AlertTriangle, Info, ChevronDown, Search, Settings,
-    Play, Pause, Volume2, Download, Upload, Shield, Cpu, HardDrive
-} from 'lucide-react';
+import {Activity, AlertTriangle, Check, Cpu, Server, Settings, Shield, Terminal, Users, Zap} from 'lucide-react';
 
 const ComponentShowcasePage = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,10 +27,10 @@ const ComponentShowcasePage = () => {
     const [loading, setLoading] = useState(false);
 
     const selectOptions = [
-        { value: 'survival', label: 'Survival Mode' },
-        { value: 'creative', label: 'Creative Mode' },
-        { value: 'adventure', label: 'Adventure Mode' },
-        { value: 'spectator', label: 'Spectator Mode' }
+        {value: 'survival', label: 'Survival Mode'},
+        {value: 'creative', label: 'Creative Mode'},
+        {value: 'adventure', label: 'Adventure Mode'},
+        {value: 'spectator', label: 'Spectator Mode'}
     ];
 
     const handleLoadingDemo = () => {
@@ -68,11 +63,13 @@ const ComponentShowcasePage = () => {
                         <GlassCard hover={false}>
                             <h3 className="text-lg font-cyber text-nexus-text-muted mb-4">Variants</h3>
                             <div className="flex flex-col items-start space-y-3">
-                                <NeonButton variant="primary"><Zap className="w-4 h-4 mr-2" />Primary</NeonButton>
-                                <NeonButton variant="secondary"><Settings className="w-4 h-4 mr-2" />Secondary</NeonButton>
-                                <NeonButton variant="success"><Check className="w-4 h-4 mr-2" />Success</NeonButton>
-                                <NeonButton variant="warning"><AlertTriangle className="w-4 h-4 mr-2" />Warning</NeonButton>
-                                <NeonButton variant="danger"><Shield className="w-4 h-4 mr-2" />Danger</NeonButton>
+                                <NeonButton variant="primary"><Zap className="w-4 h-4 mr-2"/>Primary</NeonButton>
+                                <NeonButton variant="secondary"><Settings
+                                    className="w-4 h-4 mr-2"/>Secondary</NeonButton>
+                                <NeonButton variant="success"><Check className="w-4 h-4 mr-2"/>Success</NeonButton>
+                                <NeonButton variant="warning"><AlertTriangle
+                                    className="w-4 h-4 mr-2"/>Warning</NeonButton>
+                                <NeonButton variant="danger"><Shield className="w-4 h-4 mr-2"/>Danger</NeonButton>
                             </div>
                         </GlassCard>
                         <GlassCard hover={false}>
@@ -86,7 +83,8 @@ const ComponentShowcasePage = () => {
                         <GlassCard hover={false}>
                             <h3 className="text-lg font-cyber text-nexus-text-muted mb-4">States</h3>
                             <div className="flex flex-col items-start space-y-3">
-                                <NeonButton loading={loading} onClick={handleLoadingDemo}>Click to Test Loading</NeonButton>
+                                <NeonButton loading={loading} onClick={handleLoadingDemo}>Click to Test
+                                    Loading</NeonButton>
                                 <NeonButton disabled>Disabled</NeonButton>
                             </div>
                         </GlassCard>
@@ -97,10 +95,12 @@ const ComponentShowcasePage = () => {
                 <section className="space-y-6">
                     <h2 className="text-2xl font-cyber text-nexus-primary tracking-widest">CARDS & STATS</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <StatCard title="Players Online" value="42/100" icon={Users} variant="accent" trend="+12%" />
-                        <StatCard title="Server Load" value="23%" icon={Cpu} variant="warning" trend="-5%" trendDirection="down" />
-                        <StatCard title="Latency" value="32ms" icon={Activity} variant="primary" />
-                        <StatCard title="Status" value="Offline" icon={Shield} variant="error" trend="since 1h ago" trendDirection="down" />
+                        <StatCard title="Players Online" value="42/100" icon={Users} variant="accent" trend="+12%"/>
+                        <StatCard title="Server Load" value="23%" icon={Cpu} variant="warning" trend="-5%"
+                                  trendDirection="down"/>
+                        <StatCard title="Latency" value="32ms" icon={Activity} variant="primary"/>
+                        <StatCard title="Status" value="Offline" icon={Shield} variant="error" trend="since 1h ago"
+                                  trendDirection="down"/>
                     </div>
                 </section>
 
@@ -110,12 +110,15 @@ const ComponentShowcasePage = () => {
                     <GlassCard hover={false}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
                             <div className="space-y-6">
-                                <CyberInput label="Server Address" placeholder="play.nexusk.net" value={inputValue} onChange={(e) => setInputValue(e.target.value)} icon={Server} />
-                                <CyberInput label="Password" type="password" placeholder="Enter your password" />
-                                <CyberInput label="Error State" placeholder="Invalid input" error="This field is required." />
+                                <CyberInput label="Server Address" placeholder="play.nexusk.net" value={inputValue}
+                                            onChange={(e) => setInputValue(e.target.value)} icon={Server}/>
+                                <CyberInput label="Password" type="password" placeholder="Enter your password"/>
+                                <CyberInput label="Error State" placeholder="Invalid input"
+                                            error="This field is required."/>
                             </div>
                             <div className="space-y-6">
-                                <CyberSelect label="Game Mode" options={selectOptions} value={selectValue} onChangeAction={setSelectValue} />
+                                <CyberSelect label="Game Mode" options={selectOptions} value={selectValue}
+                                             onChangeAction={setSelectValue}/>
                             </div>
                         </div>
                     </GlassCard>
@@ -126,9 +129,9 @@ const ComponentShowcasePage = () => {
                     <h2 className="text-2xl font-cyber text-nexus-primary tracking-widest">PROGRESS & BADGES</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <GlassCard hover={false} className="space-y-4">
-                            <CyberProgress label="Server Health" value={85} variant="accent" />
-                            <CyberProgress label="Memory Usage" value={67} variant="warning" animated={false} />
-                            <CyberProgress label="Data Upload" value={34} variant="primary" />
+                            <CyberProgress label="Server Health" value={85} variant="accent"/>
+                            <CyberProgress label="Memory Usage" value={67} variant="warning" animated={false}/>
+                            <CyberProgress label="Data Upload" value={34} variant="primary"/>
                         </GlassCard>
                         <GlassCard hover={false} className="space-y-6">
                             <div className="flex flex-wrap items-center gap-4">
@@ -155,10 +158,12 @@ const ComponentShowcasePage = () => {
                             <NeonButton onClick={() => setModalOpen(true)}>
                                 <Terminal className="w-4 h-4 mr-2"/>Open Modal
                             </NeonButton>
-                            <NeonButton variant="success" onClick={() => showToast('success', 'Connection established.')}>
+                            <NeonButton variant="success"
+                                        onClick={() => showToast('success', 'Connection established.')}>
                                 Show Success Toast
                             </NeonButton>
-                            <NeonButton variant="warning" onClick={() => showToast('warning', 'High latency detected.')}>
+                            <NeonButton variant="warning"
+                                        onClick={() => showToast('warning', 'High latency detected.')}>
                                 Show Warning Toast
                             </NeonButton>
                             <NeonButton variant="danger" onClick={() => showToast('error', 'Authentication failed.')}>
@@ -172,9 +177,12 @@ const ComponentShowcasePage = () => {
                 <section className="space-y-6">
                     <h2 className="text-2xl font-cyber text-nexus-primary tracking-widest">LOADING ANIMATIONS</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <GlassCard hover={false}><CyberLoading type="spinner" size="lg" text="Loading Data..." /></GlassCard>
-                        <GlassCard hover={false}><CyberLoading type="pulse" variant="accent" size="lg" text="Connecting..." /></GlassCard>
-                        <GlassCard hover={false}><CyberLoading type="dots" variant="secondary" text="Processing..." /></GlassCard>
+                        <GlassCard hover={false}><CyberLoading type="spinner" size="lg"
+                                                               text="Loading Data..."/></GlassCard>
+                        <GlassCard hover={false}><CyberLoading type="pulse" variant="accent" size="lg"
+                                                               text="Connecting..."/></GlassCard>
+                        <GlassCard hover={false}><CyberLoading type="dots" variant="secondary"
+                                                               text="Processing..."/></GlassCard>
                     </div>
                 </section>
 
@@ -186,7 +194,7 @@ const ComponentShowcasePage = () => {
                     <p className="text-nexus-text-muted">
                         Authorize connection to NexusK main server. Please confirm your credentials.
                     </p>
-                    <CyberInput label="Player Name" placeholder="Enter your callsign" icon={Users} />
+                    <CyberInput label="Player Name" placeholder="Enter your callsign" icon={Users}/>
                     <div className="flex justify-end space-x-4">
                         <NeonButton variant="secondary" onClick={() => setModalOpen(false)}>Decline</NeonButton>
                         <NeonButton variant="primary" onClick={() => setModalOpen(false)}>Authorize</NeonButton>

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, {useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
 
 type Block = {
     id: string;
@@ -18,14 +18,14 @@ type BlockGridProps = {
 };
 
 const defaultBlocks: Block[] = [
-    { id: 'grass', name: 'Grass Block', color: 'bg-mc-grass' },
-    { id: 'stone', name: 'Stone', color: 'bg-mc-stone' },
-    { id: 'diamond', name: 'Diamond Ore', color: 'bg-mc-diamond' },
-    { id: 'gold', name: 'Gold Ore', color: 'bg-mc-gold' },
-    { id: 'redstone', name: 'Redstone Ore', color: 'bg-mc-redstone' },
-    { id: 'emerald', name: 'Emerald Ore', color: 'bg-mc-emerald' },
-    { id: 'iron', name: 'Iron Ore', color: 'bg-mc-iron' },
-    { id: 'coal', name: 'Coal Ore', color: 'bg-mc-coal' },
+    {id: 'grass', name: 'Grass Block', color: 'bg-mc-grass'},
+    {id: 'stone', name: 'Stone', color: 'bg-mc-stone'},
+    {id: 'diamond', name: 'Diamond Ore', color: 'bg-mc-diamond'},
+    {id: 'gold', name: 'Gold Ore', color: 'bg-mc-gold'},
+    {id: 'redstone', name: 'Redstone Ore', color: 'bg-mc-redstone'},
+    {id: 'emerald', name: 'Emerald Ore', color: 'bg-mc-emerald'},
+    {id: 'iron', name: 'Iron Ore', color: 'bg-mc-iron'},
+    {id: 'coal', name: 'Coal Ore', color: 'bg-mc-coal'},
 ];
 
 export const BlockGrid = ({
@@ -46,14 +46,14 @@ export const BlockGrid = ({
                     width: gridSize * (blockSize + 4), // blockSize + gap
                 }}
             >
-                {Array.from({ length: gridSize * gridSize }).map((_, index) => {
+                {Array.from({length: gridSize * gridSize}).map((_, index) => {
                     const block = blocks[index % blocks.length];
                     return (
                         <div
                             key={index}
                             className="relative cursor-pointer transition-transform duration-200 hover:scale-110 hover:z-10"
-                            style={{ width: blockSize, height: blockSize }}
-                            onMouseEnter={() => setHoveredBlock({ block, index })}
+                            style={{width: blockSize, height: blockSize}}
+                            onMouseEnter={() => setHoveredBlock({block, index})}
                             onMouseLeave={() => setHoveredBlock(null)}
                         >
                             <div
@@ -63,7 +63,8 @@ export const BlockGrid = ({
                                     imageRendering: 'pixelated',
                                 }}
                             />
-                            <div className="absolute inset-0 opacity-0 hover:opacity-10 transition-opacity bg-white/50" />
+                            <div
+                                className="absolute inset-0 opacity-0 hover:opacity-10 transition-opacity bg-white/50"/>
                         </div>
                     );
                 })}
@@ -72,13 +73,14 @@ export const BlockGrid = ({
             <AnimatePresence>
                 {showTooltips && hoveredBlock && (
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
+                        initial={{opacity: 0, y: 10}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: 10}}
+                        transition={{duration: 0.2}}
                         className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-20 pointer-events-none p-2 bg-nexus-darker text-white rounded-lg shadow-lg border border-nexus-surface font-matrix text-sm"
                     >
-                        <div className={`font-bold ${hoveredBlock.block.color.replace('bg-', 'text-')}`}>{hoveredBlock.block.name}</div>
+                        <div
+                            className={`font-bold ${hoveredBlock.block.color.replace('bg-', 'text-')}`}>{hoveredBlock.block.name}</div>
                         <div className="text-xs text-nexus-text-muted">
                             Pos: {hoveredBlock.index % gridSize}, {Math.floor(hoveredBlock.index / gridSize)}
                         </div>

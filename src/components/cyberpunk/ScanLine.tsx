@@ -31,7 +31,7 @@ export const ScanLine = ({
 
     return (
         <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
-            <div className={`absolute ${animationClass}`} style={lineStyle} />
+            <div className={`absolute ${animationClass}`} style={lineStyle}/>
         </div>
     );
 };

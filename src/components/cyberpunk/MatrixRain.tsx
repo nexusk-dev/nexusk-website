@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, {useEffect, useRef} from 'react';
 
 type MatrixRainProps = {
     density?: number;
@@ -76,7 +76,7 @@ export const MatrixRain = ({
 
     return (
         <div className={`relative overflow-hidden bg-nexus-dark ${className}`}>
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"/>
             {children && (
                 <div className="relative z-10 h-full w-full">{children}</div>
             )}

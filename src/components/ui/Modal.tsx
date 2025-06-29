@@ -1,6 +1,6 @@
 import React from 'react';
-import { X } from 'lucide-react';
-import { GlassCard } from './Card';
+import {X} from 'lucide-react';
+import {GlassCard} from './Card';
 
 type CyberModalProps = {
     isOpen: boolean;
@@ -48,7 +48,7 @@ export const CyberModal = ({
                                     onClick={onClose}
                                     className="text-nexus-text-muted hover:text-nexus-error transition-colors"
                                 >
-                                    <X className="w-6 h-6" />
+                                    <X className="w-6 h-6"/>
                                 </button>
                             )}
                         </div>

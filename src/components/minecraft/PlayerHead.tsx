@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image'; // 使用 Next.js Image 组件优化图片
 
 type PlayerHeadProps = {
@@ -24,13 +24,13 @@ export const PlayerHead = ({
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
     const sizes = {
-        sm: { pixels: 32, border: 'border-2' },
-        md: { pixels: 48, border: 'border-[3px]' },
-        lg: { pixels: 64, border: 'border-4' },
-        xl: { pixels: 96, border: 'border-[6px]' }
+        sm: {pixels: 32, border: 'border-2'},
+        md: {pixels: 48, border: 'border-[3px]'},
+        lg: {pixels: 64, border: 'border-4'},
+        xl: {pixels: 96, border: 'border-[6px]'}
     };
 
-    const { pixels, border } = sizes[size];
+    const {pixels, border} = sizes[size];
     const statusSize = Math.max(8, pixels * 0.25);
 
     const avatarUrl = imageError
@@ -63,20 +63,21 @@ export const PlayerHead = ({
                         width={pixels}
                         height={pixels}
                         className="object-cover"
-                        style={{ imageRendering: 'pixelated' }}
+                        style={{imageRendering: 'pixelated'}}
                         onError={() => setImageError(true)}
                         unoptimized // crafatar 是外部 URL，可能需要此属性
                     />
                     {showStatus && (
                         <div
                             className={`absolute -bottom-1 -right-1 rounded-full border-2 border-nexus-darker ${isOnline ? 'bg-mc-emerald animate-pulse' : 'bg-mc-stone'}`}
-                            style={{ width: statusSize, height: statusSize }}
+                            style={{width: statusSize, height: statusSize}}
                         />
                     )}
                 </div>
 
                 {showTooltip && isTooltipVisible && (
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 p-2 bg-nexus-darker text-white rounded-lg shadow-lg border border-nexus-surface font-matrix text-sm whitespace-nowrap">
+                    <div
+                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 p-2 bg-nexus-darker text-white rounded-lg shadow-lg border border-nexus-surface font-matrix text-sm whitespace-nowrap">
                         <div className="font-bold text-mc-emerald">{username}</div>
                         <div className={`text-xs ${isOnline ? 'text-mc-emerald' : 'text-mc-stone'}`}>
                             {isOnline ? '● Online' : '○ Offline'}

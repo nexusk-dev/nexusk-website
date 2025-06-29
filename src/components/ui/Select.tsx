@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { GlassCard } from './Card';
-import { ChevronDown } from 'lucide-react';
+import React, {useEffect, useRef, useState} from 'react';
+import {GlassCard} from './Card';
+import {ChevronDown} from 'lucide-react';
 
 type Option = {
     value: string;

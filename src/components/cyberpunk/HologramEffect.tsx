@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
 type HologramEffectProps = {
     children: React.ReactNode;
@@ -37,13 +37,16 @@ export const HologramEffect = ({
 
     return (
         <div className={`relative ${className}`}>
-            <div className={`relative transition-all duration-100 ${glitching ? 'opacity-80' : ''}`} style={{ filter: `drop-shadow(0 0 5px ${color}80) drop-shadow(0 0 10px ${color}40)`}}>
+            <div className={`relative transition-all duration-100 ${glitching ? 'opacity-80' : ''}`}
+                 style={{filter: `drop-shadow(0 0 5px ${color}80) drop-shadow(0 0 10px ${color}40)`}}>
                 {children}
             </div>
             {/* 静态扫描线 */}
-            <div className="absolute inset-0 pointer-events-none opacity-30" style={{ background: `repeating-linear-gradient(0deg, transparent, transparent 2px, ${color}20 2px, ${color}20 4px)` }}/>
+            <div className="absolute inset-0 pointer-events-none opacity-30"
+                 style={{background: `repeating-linear-gradient(0deg, transparent, transparent 2px, ${color}20 2px, ${color}20 4px)`}}/>
             {/* 动态扫描线 */}
-            <div className="absolute inset-0 pointer-events-none opacity-60 animate-hologram-scan" style={scanLineStyle} />
+            <div className="absolute inset-0 pointer-events-none opacity-60 animate-hologram-scan"
+                 style={scanLineStyle}/>
         </div>
     );
 };

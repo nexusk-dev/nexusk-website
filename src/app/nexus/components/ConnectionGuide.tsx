@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { GlassCard, NeonButton } from '@/components/ui';
-import { Code, Download, Terminal } from 'lucide-react';
+import React, {useState} from 'react';
+import {GlassCard, NeonButton} from '@/components/ui';
+import {Code, Download, Terminal} from 'lucide-react';
 
 const guides = {
     java: {
@@ -37,7 +37,7 @@ export const ConnectionGuide = () => {
         <GlassCard hover={false} className="space-y-6">
             <h3 className="text-xl font-cyber text-nexus-primary">CONNECTION GUIDE</h3>
             <div className="flex space-x-2 border-b border-nexus-primary/20 pb-4">
-                {Object.entries(guides).map(([key, { title }]) => (
+                {Object.entries(guides).map(([key, {title}]) => (
                     <button
                         key={key}
                         onClick={() => setActiveTab(key as 'java' | 'bedrock')}
@@ -53,7 +53,8 @@ export const ConnectionGuide = () => {
             <div className="space-y-3">
                 {guides[activeTab].steps.map((step, index) => (
                     <div key={index} className="flex items-center space-x-3 bg-nexus-darker/50 p-3 rounded-md">
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-nexus-primary/20 border border-nexus-primary/50 flex items-center justify-center">
+                        <div
+                            className="flex-shrink-0 w-6 h-6 rounded-full bg-nexus-primary/20 border border-nexus-primary/50 flex items-center justify-center">
                             <span className="text-xs font-bold text-nexus-primary">{index + 1}</span>
                         </div>
                         <span className="text-nexus-text font-matrix text-sm">{step}</span>
@@ -63,13 +64,13 @@ export const ConnectionGuide = () => {
 
             <div className="flex flex-wrap gap-3 pt-4 border-t border-nexus-primary/20">
                 <NeonButton variant="primary" onClick={() => navigator.clipboard.writeText('play.nexusk.net')}>
-                    <Terminal className="w-4 h-4 mr-2" />Copy IP
+                    <Terminal className="w-4 h-4 mr-2"/>Copy IP
                 </NeonButton>
                 <NeonButton variant="secondary">
-                    <Download className="w-4 h-4 mr-2" />Download Launcher
+                    <Download className="w-4 h-4 mr-2"/>Download Launcher
                 </NeonButton>
                 <NeonButton variant="success">
-                    <Code className="w-4 h-4 mr-2" />Modpack Guide
+                    <Code className="w-4 h-4 mr-2"/>Modpack Guide
                 </NeonButton>
             </div>
         </GlassCard>
