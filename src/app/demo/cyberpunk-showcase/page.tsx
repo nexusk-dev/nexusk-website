@@ -1,21 +1,19 @@
 // src/app/cyberpunk-basic_ui_showcase/page.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
-    MatrixRain,
-    HologramEffect,
-    GlitchText,
-    NeonGrid,
     CyberFrame,
-    PulseEffect,
-    ScanLine,
     DigitalRain,
+    GlitchText,
+    HologramEffect,
     HoloHUD,
+    MatrixRain,
+    NeonGrid,
+    PulseEffect,
 } from '@/components/cyberpunk'; // 导入我们的特效组件
-import { Cpu, Eye, Globe, Radio, Shield, Terminal, Zap } from 'lucide-react';
-import { NeonButton } from '@/components/ui'; // 引入 NeonButton
-
+import {Cpu} from 'lucide-react';
+import {NeonButton} from '@/components/ui'; // 引入 NeonButton
 
 
 const CyberpunkEffectsShowcase = () => {

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { HologramEffect, GlitchText, NeonGrid, CyberFrame } from '@/components/cyberpunk';
-import { NeonButton } from '@/components/ui';
-import { Zap, Download, Info, Terminal, Copy, ChevronDown } from 'lucide-react';
+import React, {useState} from 'react';
+import {CyberFrame, GlitchText, HologramEffect, NeonGrid} from '@/components/cyberpunk';
+import {NeonButton} from '@/components/ui';
+import {ChevronDown, Copy, Download, Terminal, Zap} from 'lucide-react';
 
 export const Hero = () => {
     const [copied, setCopied] = useState(false);
