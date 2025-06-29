@@ -1,30 +1,198 @@
-/* src/app/globals.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* src/app/globals.css - 正确的顺序 */
 
+/* 1. @import 必须在最前面 */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@400;600&display=swap');
 
-/* 赛博朋克全局样式 */
-body {
-  @apply bg-nexus-darker text-nexus-text;
-  overflow-x: hidden;
+/* 2. Tailwind 指令 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. 基础样式 */
+@layer base {
+  body {
+    @apply bg-nexus-darker text-nexus-text;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
-/* 滚动条样式 */
-::-webkit-scrollbar {
-  width: 8px;
+/* 4. 组件样式 */
+@layer components {
+  /* 霓虹按钮 */
+  .neon-button {
+    @apply bg-transparent border border-nexus-primary text-nexus-primary px-6 py-3 font-cyber uppercase tracking-wider transition-all duration-300;
+    @apply hover:bg-nexus-primary hover:text-nexus-dark hover:shadow-lg;
+    box-shadow:
+            0 0 5px #00d4ff,
+            inset 0 0 5px transparent;
+  }
+
+  .neon-button:hover {
+    box-shadow:
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            inset 0 0 10px #00d4ff;
+  }
+
+  /* 玻璃卡片 */
+  .glass-card {
+    @apply backdrop-blur-md bg-white bg-opacity-5 border border-white border-opacity-20 rounded-lg p-6;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* 赛博朋克文字 */
+  .cyber-text {
+    @apply font-cyber text-transparent bg-clip-text;
+    background-image: linear-gradient(45deg, #00d4ff, #ff2a6d);
+  }
+
+  /* 大标题 */
+  .hero-title {
+    @apply text-6xl md:text-8xl font-cyber font-black text-center;
+    background: linear-gradient(45deg, #00d4ff, #ff2a6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  }
+
+  /* 服务器状态卡片 */
+  .server-status {
+    @apply glass-card border-nexus-accent/50;
+  }
+
+  .server-status.online {
+    @apply border-nexus-accent shadow-lg;
+    box-shadow: 0 0 20px rgba(1, 255, 137, 0.3);
+  }
+
+  .server-status.offline {
+    @apply border-red-500/50;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-nexus-dark;
+/* 5. 工具类 */
+@layer utilities {
+  /* 文字发光 */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  /* 边框发光 */
+  .border-glow {
+    box-shadow: 0 0 5px currentColor;
+  }
+
+  /* 动画类 */
+  .animate-neon-glow {
+    animation: neon-glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-matrix-rain {
+    animation: matrix-rain 20s linear infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch 1s linear infinite;
+  }
+
+  /* 自定义滚动条 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-nexus-dark;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-nexus-primary rounded-full;
+  }
+
+  /* 选择文本样式 */
+  .custom-selection::selection {
+    background: #00d4ff;
+    color: #0a0a0f;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-nexus-primary rounded-full;
+/* 6. 动画定义 */
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow:
+            0 0 5px #00d4ff,
+            0 0 10px #00d4ff,
+            0 0 15px #00d4ff;
+  }
+  50% {
+    box-shadow:
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            0 0 30px #00d4ff;
+  }
 }
 
-/* 选择文本样式 */
+@keyframes matrix-rain {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+/* 7. 全局选择样式 */
 ::selection {
-  @apply bg-nexus-primary text-nexus-dark;
+  background: #00d4ff;
+  color: #0a0a0f;
+}
+
+/* 8. 响应式样式 */
+@media (max-width: 640px) {
+  .hero-title {
+    @apply text-4xl;
+  }
+
+  .neon-button {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+@media (max-width: 768px) {
+  .glass-card {
+    @apply p-4;
+  }
+}
+
+/* 9. 深色主题 */
+.dark {
+  color-scheme: dark;
+}
+
+/* 10. 打印样式 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .neon-button, .glass-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
 }
