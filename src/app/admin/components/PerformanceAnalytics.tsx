@@ -3,11 +3,6 @@
 import React, {useEffect, useState} from 'react';
 import {GlassCard} from '@/components/ui';
 
-interface ChartProps {
-    data: number[];
-    colorClass: string;
-    max: number;
-}
 
 const generateData = (length: number, min: number, max: number): number[] =>
     Array.from({length}, () => min + Math.random() * (max - min));
@@ -67,7 +62,7 @@ export const PerformanceAnalytics = () => {
                 <h3 className="text-xl font-cyber text-nexus-primary">PERFORMANCE ANALYTICS</h3>
                 <div className="flex space-x-2">
                     {Object.keys(chartConfig).map(range => (
-                        <button key={range} onClick={() => setTimeRange(range as any)}
+                        <button key={range} onClick={() => setTimeRange(range as '24h' | '7d')}
                                 className={`px-3 py-1 text-sm font-matrix border-2 rounded transition-colors ${timeRange === range ? 'border-nexus-primary text-nexus-primary bg-nexus-primary/10' : 'border-nexus-surface text-nexus-text-muted hover:border-nexus-primary'}`}>
                             {range}
                         </button>
