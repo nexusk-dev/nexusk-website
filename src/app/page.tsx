@@ -1,38 +1,26 @@
 // src/app/page.tsx - 测试所有样式
+import ServerStatus from "@/components/ServerStatus";
 export default function Home() {
   return (
       <div className="min-h-screen bg-nexus-darker flex items-center justify-center">
         <div className="text-center space-y-8 p-8">
-          {/* 主标题 */}
-          <h1 className="hero-title animate-neon-glow">
-            NEXUSK
-          </h1>
+          {/* Hero 区域 */}
+          <section className="text-center mb-16">
+            <h1 className="hero-title animate-neon-glow mb-6">
+              NEXUSK
+            </h1>
+            <p className="text-xl text-nexus-muted font-matrix mb-8">
+              未来科技连接点 · The Future Tech Nexus
+            </p>
+          </section>
 
-          {/* 副标题 */}
-          <p className="text-xl text-nexus-muted font-matrix">
-            未来科技连接点 · The Future Tech Nexus
-          </p>
-
-          {/* 服务器状态卡片 */}
-          <div className="server-status online max-w-md mx-auto">
-            <div className="flex items-center justify-between">
-              <span className="text-nexus-accent font-cyber">SERVER STATUS</span>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-nexus-accent rounded-full animate-pulse"></div>
-                <span className="text-nexus-accent font-matrix">ONLINE</span>
-              </div>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <div className="text-nexus-muted">玩家在线</div>
-                <div className="text-nexus-text font-cyber text-lg">24/100</div>
-              </div>
-              <div>
-                <div className="text-nexus-muted">延迟</div>
-                <div className="text-nexus-text font-cyber text-lg">12ms</div>
-              </div>
-            </div>
-          </div>
+          {/* 动态服务器状态 */}
+          <section className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-2xl font-cyber text-nexus-primary mb-6 text-center">
+              SERVER STATUS
+            </h2>
+            <ServerStatus />
+          </section>
 
           {/* 按钮组 */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
