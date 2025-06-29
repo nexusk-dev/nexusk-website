@@ -37,15 +37,18 @@ export const PerformanceChart = () => {
     const [timeRange, setTimeRange] = useState<'1h' | '6h' | '24h' | '7d'>('1h');
     const chartData = initialData[timeRange];
 
-    const Chart = ({data, colorClass, max}: ChartProps) => (
+    const Chart: React.FC<ChartProps> = ({ data, colorClass, max }) => (
         <div className="h-24 bg-nexus-darker/50 rounded flex items-end justify-around p-2 gap-2">
             {data.map((value, index) => (
-                <div key={index}
-                     className={`w-full rounded-t transition-all duration-300 hover:opacity-80 ${colorClass}`}
-                     style={{height: `${(value / max) * 100}%`}}/>
+                <div
+                    key={index}
+                    className={`w-full rounded-t transition-all duration-300 hover:opacity-80 ${colorClass}`}
+                    style={{ height: `${(value / max) * 100}%` }}
+                />
             ))}
         </div>
     );
+
 
     return (
         <GlassCard hover={false} className="space-y-6">

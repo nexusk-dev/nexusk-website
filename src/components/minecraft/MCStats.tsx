@@ -48,24 +48,24 @@ export const MCStats = ({
                         }: MCStatsProps) => {
     const displayStats = {...defaultStats, ...stats};
 
-    const StatItem = ({statKey, value}: { statKey: keyof Stats; value: any }) => {
+    const StatItem = ({ statKey, value }: { statKey: keyof Stats; value: Stats[keyof Stats] }) => {
         const config = statConfig[statKey];
         if (!config) return null;
         const Icon = config.icon;
 
         return (
-            <div
-                className="bg-nexus-darker/50 rounded-lg p-4 hover:bg-nexus-surface transition-colors flex items-center space-x-4">
-                <Icon className={`w-7 h-7 flex-shrink-0 ${config.color}`}/>
+            <div className="bg-nexus-darker/50 rounded-lg p-4 hover:bg-nexus-surface transition-colors flex items-center space-x-4">
+                <Icon className={`w-7 h-7 flex-shrink-0 ${config.color}`} />
                 <div className="flex-1 min-w-0">
                     <p className="text-sm text-nexus-text-muted font-matrix uppercase tracking-wider">{config.label}</p>
                     <p className={`text-xl font-bold font-cyber truncate ${config.color}`}>
-                        {value.toLocaleString()}
+                        {typeof value === 'number' ? value.toLocaleString() : value}
                     </p>
                 </div>
             </div>
         );
     };
+
 
     if (layout === 'list') {
         return (

@@ -12,12 +12,11 @@ type CyberFrameProps = {
 export const CyberFrame = ({
                                children,
                                variant = 'default',
-                               color = '#00d4ff', // nexus-primary
+                               color = '#00d4ff',
                                corners = true,
                                scanLine = true,
                                className = '',
                            }: CyberFrameProps) => {
-
     const variants = {
         default: 'border-2',
         thick: 'border-4',
@@ -25,9 +24,14 @@ export const CyberFrame = ({
         dashed: 'border-2 border-dashed',
     };
 
-    const clipPathStyle = corners ? {clipPath: 'polygon(15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px)'} : {};
+    const clipPathStyle = corners
+        ? {
+            clipPath:
+                'polygon(15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px)',
+        }
+        : {};
 
-    const Corner = ({position}: { position: string }) => (
+    const Corner = ({ position }: { position: string }) => (
         <div
             className={`absolute w-4 h-4 ${position}`}
             style={{
@@ -43,22 +47,31 @@ export const CyberFrame = ({
     );
 
     return (
-        <div className={`relative p-0.5 ${className}`} style={clipPathStyle}>
-            <div className="relative w-full h-full p-4"
-                 style={{backgroundColor: '#0a0a0f90' /* nexus-dark with alpha */}}>
+        <div
+            className={`relative p-0.5 ${variants[variant]} ${className}`}
+            style={{ ...clipPathStyle, borderColor: color }}
+        >
+            <div
+                className="relative w-full h-full p-4"
+                style={{ backgroundColor: '#0a0a0f90' }}
+            >
                 {children}
             </div>
             {corners && (
                 <>
-                    <Corner position="top-0 left-0"/>
-                    <Corner position="top-0 right-0"/>
-                    <Corner position="bottom-0 left-0"/>
-                    <Corner position="bottom-0 right-0"/>
+                    <Corner position="top-0 left-0" />
+                    <Corner position="top-0 right-0" />
+                    <Corner position="bottom-0 left-0" />
+                    <Corner position="bottom-0 right-0" />
                 </>
             )}
             {scanLine && (
-                <div className="absolute inset-0 pointer-events-none animate-cyber-scan"
-                     style={{background: `linear-gradient(90deg, transparent, ${color}30, transparent)`}}/>
+                <div
+                    className="absolute inset-0 pointer-events-none animate-cyber-scan"
+                    style={{
+                        background: `linear-gradient(90deg, transparent, ${color}30, transparent)`,
+                    }}
+                />
             )}
         </div>
     );
