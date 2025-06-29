@@ -61,8 +61,8 @@ export const PerformanceAnalytics = () => {
             <div className="flex items-center justify-between">
                 <h3 className="text-xl font-cyber text-nexus-primary">PERFORMANCE ANALYTICS</h3>
                 <div className="flex space-x-2">
-                    {Object.keys(chartConfig).map(range => (
-                        <button key={range} onClick={() => setTimeRange(range as '24h' | '7d')}
+                    {(['24h', '7d'] as const).map(range => (
+                        <button key={range} onClick={() => setTimeRange(range)}
                                 className={`px-3 py-1 text-sm font-matrix border-2 rounded transition-colors ${timeRange === range ? 'border-nexus-primary text-nexus-primary bg-nexus-primary/10' : 'border-nexus-surface text-nexus-text-muted hover:border-nexus-primary'}`}>
                             {range}
                         </button>
