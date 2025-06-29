@@ -1,7 +1,18 @@
-import type { NextConfig } from "next";
+// next.config.js - Netlify 优化版
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    output: 'export',
+    trailingSlash: true,
+    images: {
+        unoptimized: true
+    },
+    // Netlify 优化
+    experimental: {
+        optimizeCss: true
+    },
+    compiler: {
+        removeConsole: process.env.NODE_ENV === 'production'
+    }
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = nextConfig
