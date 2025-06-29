@@ -34,6 +34,7 @@ interface FeaturedGuidesProps {
 
 export const FeaturedGuides = ({ filters: _filters}: FeaturedGuidesProps) => {
     // In a real app, you would fetch guides based on the `filters` prop
+    console.log(_filters)
     return (
         <div className="space-y-6">
             <CyberFrame color="var(--color-nexus-primary)" corners>
