@@ -1,5 +1,5 @@
 // src/app/api/server-status/route.ts
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 interface ServerStatus {
     online: boolean
@@ -33,7 +33,7 @@ interface McServerStatResponse {
     ping?: number
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         // 从环境变量获取服务器 IP，或使用默认值
         const serverIP = process.env.MINECRAFT_SERVER_IP || 'nexusk.fun'
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
             version: data.version || 'Unknown',
             motd: data.motd?.clean || data.motd?.raw || 'NexusK Server',
             ping: data.ping || 0,
-            icon: data.icon || ''
+            icon: data.icon || undefined
         }
 
         // 添加自定义服务器信息
