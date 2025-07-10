@@ -36,7 +36,7 @@ export const Hero = () => {
                         <div
                             className="flex items-center justify-center space-x-4 bg-nexus-darker/50 p-3 rounded-md border border-nexus-primary/20">
                             <Terminal className="w-5 h-5 text-nexus-primary"/>
-                            <span className="font-matrix text-nexus-primary text-lg">play.nexusk.net</span>
+                            <span className="font-matrix text-nexus-primary text-lg">play.nexusk.fun</span>
                             <button onClick={copyIP}
                                     className="text-nexus-text-muted hover:text-nexus-primary transition-colors">
                                 <Copy className="w-5 h-5"/>
@@ -44,6 +44,11 @@ export const Hero = () => {
                         </div>
                         {copied && <p className="text-center text-nexus-accent font-matrix text-sm animate-pulse">✓ IP
                             Copied!</p>}
+
+                        <div className="flex items-center justify-center space-x-2 text-nexus-text-muted text-sm pt-2">
+                            <span className="text-nexus-primary font-matrix">QQ群:</span>
+                            <span className="font-semibold">850933145</span> {/* ← 替换为你真实的群号 */}
+                        </div>
 
                         <div className="flex flex-wrap justify-center gap-4 pt-4">
                             <NeonButton variant="primary" size="lg">
