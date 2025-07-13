@@ -268,7 +268,7 @@ const NexusKPoster: React.FC = () => {
                         进入新星世界，与九位奇异存在共同探索真相
                     </p>
                     <p className="text-gray-300" style={{ fontFamily: 'Orbitron, monospace' }}>
-                        play.nexusk.fun | Java 1.21.4 | 首批拓荒者招募中
+                        play.nexusk.fun | Java 1.21.4 | 首批拓荒者招募中 | Q群: 850933145
                     </p>
                 </div>
             </div>
