@@ -187,7 +187,7 @@ const NexusKPoster: React.FC = () => {
                 </div>
                 {character.catchphrase && (
                     <div style={catchphraseStyle}>
-                        "{character.catchphrase}"
+                        &ldquo;{character.catchphrase}&rdquo;
                     </div>
                 )}
             </div>
