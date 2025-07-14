@@ -1,1 +1,1 @@
-🌆 NexusK 官方网站
+🌆 [NexusK 官方网站](https://nexusk.fun)
